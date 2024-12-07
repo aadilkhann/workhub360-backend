@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Indexed;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,12 +19,16 @@ public class User {
 
     @Id
     @Column(name = "user_id",unique = true)
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     @Column(name = "username", nullable = false, unique = true)
     private String userName;
     private String name;
     private String email;
     private String password;
     private String role;
+
+    public User(UUID uuid) {
+        this.id = uuid;
+    }
 }

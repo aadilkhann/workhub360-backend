@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -31,7 +32,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(Long id) {
+    public User getUser(UUID id) {
         try{
             return userRepository.findAllById(id);
         } catch (Exception e) {
@@ -39,7 +40,7 @@ public class UserService {
         }
     }
 
-    public void deleteUser(Long id) {
+    public void deleteUser(UUID id) {
         try{
             userRepository.deleteById(id);
         }
