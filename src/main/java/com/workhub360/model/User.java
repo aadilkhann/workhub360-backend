@@ -13,7 +13,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "user", schema = "public", indexes = {
-        @Index(name = "idx_username", columnList = "username")
+        @Index(name = "idx_username", columnList = "username"),
+        @Index(name = "idx_email", columnList = "email")
 })
 public class User {
 
@@ -21,12 +22,14 @@ public class User {
     @Column(name = "user_id",unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    private String firstName;
+    private String lastName;
+    private String email;
     @Column(name = "username", nullable = false, unique = true)
     private String userName;
-    private String name;
-    private String email;
     private String password;
     private String role;
+    private String proflePicture;
 
     public User(UUID uuid) {
         this.id = uuid;

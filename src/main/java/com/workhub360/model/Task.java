@@ -17,6 +17,7 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "task_id",unique = true)
     private UUID id;
 
     private String title;
@@ -42,8 +43,10 @@ public class Task {
 
     private Instant created;
     private Instant updated;
+    private Instant dueDate;
 
     private String priority;
+
 
     @PrePersist
     public void prePersist() {
